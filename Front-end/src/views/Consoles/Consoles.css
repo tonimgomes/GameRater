@@ -1,49 +1,34 @@
-.games-container {
+.titulo-consoles{
+    display: flex;
+    justify-content: left;
+    font-size: 3em;
+    margin-left: 1em;
+}
+
+.divConsoles{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     justify-content: space-evenly;
-
-    margin: auto;
-    margin-top: 10em;
-    max-width: 90%;
-    }
-
-button.titulo-consoles{
-    margin-top: 1em;
-    display: flex;
-    justify-content: center;
-    font-size: 2em;
-    background-color: #5f9ea0;
+    margin-left: 7.5em;
+    margin-top: 5em;
 }
 
-h1.titulo-consoles {
-    margin-top: 1em;
-    display: flex;
-    justify-content: left;
-    font-size: 4em;
-    margin-left: 1.3em;
-}
-
-.console-container { 
-    width: 16em;
+.logo-consoles{ 
     cursor: pointer;
 }
-.console-container img { 
-    width: 100%;
+
+#xbox{
+    width: 10em;
 }
 
-#xbox {
-    width: 12em;
-}
-
-#play {
-    width: 11em;    
+#play{
+    width: 13em;    
 }
 
 #switch {
-    width: 15em;
+    width: 9em;
 }
 
 #pc {
-    width: 18em;
+    width: 10em;
 }

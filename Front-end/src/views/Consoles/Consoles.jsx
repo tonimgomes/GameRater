@@ -1,32 +1,35 @@
 import React from 'react'
+import xbox from '../../imagens/xbox.png'
+import pl from '../../imagens/playstation.png'
+import nswitch from '../../imagens/switch.png'
+import pc from '../../imagens/windows.png'
 import './Consoles.css'
 
 function Consoles(){
     return(
-        <>
-            <div >
-                <h1 class="titulo-consoles">Selecione uma plataforma:</h1>
+        <div className="principal">
+            <div>
+                <h1 className="titulo-consoles">Selecione uma plataforma:</h1>
             </div>
 
-            <div class="games-container">
-                <div class="console-container" id='xbox'>
-                    <button class="titulo-consoles">Xbox</button>
+            <div className="divConsoles">
+                <div className="logo-consoles" id='xbox'>
+                    <img src={xbox} alt="XBox"/>
                 </div>
 
-                <div class="console-container" id='play' >
-                    <button class="titulo-consoles">PlayStation</button>
+                <div className="logo-consoles" id='play' >
+                    <img src={pl} alt="Playstation"/>
                 </div>
 
-                <div class="console-container" id='switch'>
-                    <button class="titulo-consoles">Switch</button>
+                <div className="logo-consoles" id='switch'>
+                    <img src={nswitch} alt="Switch"/>
                 </div>
 
-                <div class="console-container" id='pc'>
-                    <button class="titulo-consoles">PC</button>
+                <div className="logo-consoles" id='pc'>
+                    <img src={pc} alt="Windows"/>
                 </div>
-                
             </div>
-        </>
+        </div>
     )
 }
 
