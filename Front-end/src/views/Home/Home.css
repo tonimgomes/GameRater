@@ -1,0 +1,9 @@
+.backGround{
+    max-height: 565px;
+    overflow:hidden;
+}
+
+img{
+    width: 100%;
+    height: fit-content;
+}

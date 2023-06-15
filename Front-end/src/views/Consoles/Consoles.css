@@ -1,0 +1,49 @@
+.games-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: space-evenly;
+
+    margin: auto;
+    margin-top: 10em;
+    max-width: 90%;
+    }
+
+button.titulo-consoles{
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+    font-size: 2em;
+    background-color: #5f9ea0;
+}
+
+h1.titulo-consoles {
+    margin-top: 1em;
+    display: flex;
+    justify-content: left;
+    font-size: 4em;
+    margin-left: 1.3em;
+}
+
+.console-container { 
+    width: 16em;
+    cursor: pointer;
+}
+.console-container img { 
+    width: 100%;
+}
+
+#xbox {
+    width: 12em;
+}
+
+#play {
+    width: 11em;    
+}
+
+#switch {
+    width: 15em;
+}
+
+#pc {
+    width: 18em;
+}

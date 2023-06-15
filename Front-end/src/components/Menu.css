@@ -1,0 +1,35 @@
+.menu{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    height: 30px;
+    background-color: #000000de;
+}
+
+.menu h2 a{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #5a2adf;
+}
+.menu h2 a:hover {
+    color: #4711db;
+}
+ 
+.menu button{
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    padding: .3rem;
+    font-size: 1.3rem;
+    background-color: #5a2adf;
+    border: 2px solid #5a2adf;
+    color: #ffffff;
+}
+.menu button:hover{
+    background-color: #4711db;
+    border: 2px solid #4711db;
+    color: #ffffff;
+}
