@@ -12,7 +12,8 @@ function Cadastro(){
     return(
         <div className='cadastro'>
             <form className='cadastroTela' onSubmit={handleClick}>
-                <h1>Cadastrar</h1>
+                <h1>Cadastrar</h1>    
+
                 <label>
                     Usuário: <br />
                     <input type="text" placeholder='Usuário' className='user' required/>
