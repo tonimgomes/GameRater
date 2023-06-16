@@ -10,7 +10,10 @@ const Menu = () => {
     function handleClick() {
         navigate('/consoles');
     }
-
+    function loginClick() {
+        navigate('/login');
+    }
+    
     return(
         <div>
             <nav className="menu">
@@ -22,6 +25,8 @@ const Menu = () => {
 
                 <button onClick={handleClick}>Consoles</button>
                 <button>Jogos</button>
+                <button onClick={loginClick}>Login</button>
+                
             </nav>
         </div>
     )
