@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 
 import './Jogos.css';
 import React, { useEffect, useState } from 'react';
-import { getGames } from '../../services/api.ts'; // Importe a função getGames do arquivo api.js
+import { getGames } from '../../services/gameService'; // Importe a função getGames do arquivo api.js
 import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
