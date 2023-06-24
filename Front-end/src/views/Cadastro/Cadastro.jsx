@@ -2,6 +2,7 @@ import {Link} from "react-router-dom";
 import {set, useForm} from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { cadastro } from '../../services/userService';
 
 import './Cadastro.css';
 
@@ -22,13 +23,15 @@ function Cadastro(){
 
     const {errors} = formState;
 
-    const submit = async (e) => {
+    const submit = async (data) => {
         try {
-            alert('Usuário cadastrado!');
+         await cadastro(data.username, data.email, data.password);
+          alert('Usuário cadastrado com sucesso!');
         } catch (error) {
-            console.error('Erro ao cadastrar usuário:', error);
+          console.error('Erro ao cadastrar usuário:', error);
+          alert('Erro ao cadastrar usuário. Por favor, tente novamente mais tarde.');
         }
-    }
+      };
 
     return(
         <div className='cadastro'>

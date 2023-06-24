@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { login } from '../../services/loginService';
-import {set, useForm} from 'react-hook-form';
+import { login } from '../../services/userService';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
@@ -13,20 +13,13 @@ const schema = yup.object({
 }).required();
 
 function Login() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-
-  const form = useForm({
+  const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
   });
 
-  const { register, control, handleSubmit, formState } = form;
-
-  const {errors} = formState;
-
-  const submit = async (e) => {
-
+  const onSubmit = async (data) => {
     try {
+      const { username, password } = data;
       const success = await login(username, password);
       if (success) {
         // Lógica de tratamento de login bem-sucedido (ex: redirecionamento para outra página)
@@ -43,32 +36,31 @@ function Login() {
 
   return (
     <div className='login'>
-      <form className='loginTela' onSubmit={handleSubmit(submit)} noValidate>
-        
+      <form className='loginTela' onSubmit={handleSubmit(onSubmit)}>
         <h1>Login</h1>
 
         <label htmlFor="username">Usuário</label>
         <input
-            type='text'
-            id='username'
-            placeholder="Usuário"
-            {...register('username')}
-          />
-          {errors.username?.message}
+          type='text'
+          id='username'
+          placeholder='Usuário'
+          {...register('username')}
+        />
+        {errors.username?.message}
 
         <label htmlFor='password'>Senha</label>
         <input
-            type='password'
-            id="password" 
-            placeholder='senha'
-            {...register('password')}
-          />
-         {errors.password?.message}
+          type='password'
+          id='password'
+          placeholder='Senha'
+          {...register('password')}
+        />
+        {errors.password?.message}
 
         <input type='submit' value='Login' className='submit' />
       </form>
       <p>
-          Não possui uma conta? <Link to='/cadastro'>Cadastre-se</Link>
+        Não possui uma conta? <Link to='/cadastro'>Cadastre-se</Link>
       </p>
     </div>
   );
