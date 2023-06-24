@@ -1,15 +1,30 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { login } from '../../services/loginService';
+import {set, useForm} from 'react-hook-form';
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 import './Login.css';
+
+const schema = yup.object({
+  username: yup.string().required('Usuário obrigatório'),
+  password: yup.string().min(5,'Senha com no mínimo 5 caracteres').required(),
+}).required();
 
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+  const form = useForm({
+    resolver: yupResolver(schema)
+  });
+
+  const { register, control, handleSubmit, formState } = form;
+
+  const {errors} = formState;
+
+  const submit = async (e) => {
 
     try {
       const success = await login(username, password);
@@ -28,33 +43,33 @@ function Login() {
 
   return (
     <div className='login'>
-      <form className='loginTela' onSubmit={handleLogin}>
+      <form className='loginTela' onSubmit={handleSubmit(submit)} noValidate>
+        
         <h1>Login</h1>
-        <label>
-          <input
+
+        <label htmlFor="username">Usuário</label>
+        <input
             type='text'
-            placeholder='Usuário'
-            className='user'
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
+            id='username'
+            placeholder="Usuário"
+            {...register('username')}
           />
-        </label>
-        <label>
-          <input
+          {errors.username?.message}
+
+        <label htmlFor='password'>Senha</label>
+        <input
             type='password'
-            placeholder='Senha'
-            className='password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
+            id="password" 
+            placeholder='senha'
+            {...register('password')}
           />
-        </label>
+         {errors.password?.message}
+
         <input type='submit' value='Login' className='submit' />
-        <p>
-          Não possui uma conta? <Link to='/cadastro'>Cadastre-se</Link>
-        </p>
       </form>
+      <p>
+          Não possui uma conta? <Link to='/cadastro'>Cadastre-se</Link>
+      </p>
     </div>
   );
 }

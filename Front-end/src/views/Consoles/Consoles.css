@@ -17,18 +17,6 @@
     cursor: pointer;
 }
 
-#xbox{
-    width: 10em;
-}
-
-#play{
-    width: 13em;    
-}
-
-#switch {
-    width: 9em;
-}
-
-#pc {
-    width: 10em;
+.divConsoles img{
+    width: 12em;
 }
