@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { login } from '../../services/userService';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -17,22 +17,28 @@ function Login() {
     resolver: yupResolver(schema)
   });
 
+  const [msg, setMsg] = useState(' ');
+
   const onSubmit = async (data) => {
     try {
       const { username, password } = data;
       const success = await login(username, password);
       if (success) {
         // Lógica de tratamento de login bem-sucedido (ex: redirecionamento para outra página)
-        alert('Bem-vindo!');
+        setMsg('Usuário Autenticado');
       } else {
         // Lógica de tratamento de login inválido (ex: exibição de mensagem de erro)
-        alert('Usuário ou senha inválidos.');
+        alert('Login inválido');
       }
     } catch (error) {
       // Lógica de tratamento de erro de login (ex: exibição de mensagem de erro)
       console.error('Erro ao fazer login:', error);
     }
   };
+
+  if(msg.includes('Usuário Autenticado')){
+    return <Navigate to='/games' />
+  }
 
   return (
     <div className='login'>
@@ -67,34 +73,3 @@ function Login() {
 }
 
 export default Login;
-/*
-import {Link} from "react-router-dom";
-
-import './Login.css';
-
-function Login(){
-
-    function handleClick(event) {
-        event.preventDefault();
-        alert('Bem Vindo!');
-    }
-
-    return(
-        <div className='login'>
-            <form className='loginTela' onSubmit={handleClick}>
-                <h1>Login</h1>
-                <label>
-                    <input type="text" placeholder='Usuário' className='user' required/>
-                </label>
-                <label>
-                    <input type="password" placeholder='Senha' className='password' required /> 
-                </label>
-                <input type="submit" value="Login" className='submit'/>
-                <p>Não possui uma conta? <Link to='/cadastro'>Cadastre-se</Link></p>
-            </form>
-        </div>
-    )
-}
-
-export default Login
-*/
