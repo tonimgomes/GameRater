@@ -35,7 +35,10 @@ const Menu = () => {
                 <button onClick={handleClick}>Consoles</button>
                 <button onClick={gamesClick}>Jogos</button>
                 {auth.username ? 
-                (<button onClick={logoutClick}>Logout</button>) :
+                (<>
+                <span className="loggedInUser">Bem-vindo, {auth.username}!</span>
+                <button onClick={logoutClick}>Logout</button>
+                </>) :
                 (<button onClick={loginClick}>Login</button>) 
                 }
                 
