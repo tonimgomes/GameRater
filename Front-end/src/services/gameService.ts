@@ -20,6 +20,16 @@ export const getGames = (): Promise<AxiosResponse<Game[]>> => {
   return axios.get<Game[]>(`${API_URL}/games`);
 };
 
+export const getGamesByPlatform = async (platform: string): Promise<Game[]> => {
+  const response = await getGames();
+  const games = response.data;
+
+  // Filtrar os jogos com base na plataforma
+  const filteredGames = games.filter((game) => game.type.includes(platform));
+  console.log(filteredGames);
+  return filteredGames;
+};
+
 // Função para criar um novo jogo
 export const createGame = (gameData: Partial<Game>): Promise<AxiosResponse<Game>> => {
   return axios.post<Game>(`${API_URL}/games`, gameData);

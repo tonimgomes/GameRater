@@ -1,21 +1,21 @@
 import {Link} from "react-router-dom";
 
-import './Jogos.css';
+import '../../Jogos/Jogos.css';
 import React, { useEffect, useState } from 'react';
-import {getGames} from '../../services/gameService'; // Importe a função getGames do arquivo api.js
+import {getGamesByPlatform} from '../../../services/gameService'; // Importe a função getGames do arquivo api.js
 import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
 
-const GameList = () => {
+const GameListXbox = () => {
   const [games, setGames] = useState([]);
   const [selectedGame, setSelectedGame] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
-    getGames()
+    getGamesByPlatform('PC')
       .then(response => {
-        setGames(response.data);
+        setGames(response);
       })
       .catch(error => {
         console.error('Erro ao obter os jogos:', error);
@@ -84,4 +84,4 @@ const GameList = () => {
 };
   
 
-export default GameList;
+export default GameListXbox;
