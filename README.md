@@ -1,11 +1,12 @@
 # GameRater
 
-Para executar, entre na pasta "Front-end" e execute os comandos na ordem:
-
+### Instalações:
 npm install
 
 npm i react-router-dom"
 
 npm i react-icons
 
+
+### Para executar:
 npm run dev
