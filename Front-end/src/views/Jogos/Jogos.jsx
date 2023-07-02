@@ -1,9 +1,10 @@
 import {Link} from "react-router-dom";
 
 import './Jogos.css';
-import React, { useEffect, useState } from 'react';
-import {getGames} from '../../services/gameService'; // Importe a função getGames do arquivo api.js
+import React, { useEffect, useState, useContext } from 'react';
+import {getGames, getGamesByPlatform} from '../../services/gameService'; // Importe a função getGames do arquivo api.js
 import Modal from 'react-modal';
+import { PlatformContext } from '../../contexts/platformContext';
 
 Modal.setAppElement('#root');
 
@@ -11,16 +12,27 @@ const GameList = () => {
   const [games, setGames] = useState([]);
   const [selectedGame, setSelectedGame] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const { selectedPlatform } = useContext(PlatformContext);
 
   useEffect(() => {
-    getGames()
-      .then(response => {
-        setGames(response.data);
-      })
-      .catch(error => {
-        console.error('Erro ao obter os jogos:', error);
-      });
-  }, []);
+    if (selectedPlatform != 'all') {
+      getGamesByPlatform(selectedPlatform)
+        .then(response => {
+          setGames(response);
+        })
+        .catch(error => {
+          console.error('Erro ao obter os jogos:', error);
+        });
+    } else {
+      getGames()
+        .then(response => {
+          setGames(response.data);
+        })
+        .catch(error => {
+          console.error('Erro ao obter os jogos:', error);
+        });
+    }
+  }, [selectedPlatform]);
 
   const openModal = (game) => {
     setSelectedGame(game);

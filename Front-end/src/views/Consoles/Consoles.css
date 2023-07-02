@@ -1,3 +1,44 @@
+.titulo-consoles {
+    display: flex;
+    justify-content: left;
+    font-size: 3em;
+    margin-left: 1em;
+}
+
+.divConsoles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-content: space-evenly;
+    margin-left: 7.5em;
+    margin-top: 5em;
+    gap: 2em;
+}
+
+.platform-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.logo-consoles img {
+    width: 12em;
+}
+
+.consoles-list {
+    margin-top: 1em;
+}
+
+.console-item {
+    cursor: pointer;
+}
+.console-item:hover {
+    color: rgb(237, 0, 0);
+    transition: 0.5s;
+    font-style: bold;
+}
+
+/*
 .titulo-consoles{
     display: flex;
     justify-content: left;
@@ -19,4 +60,4 @@
 
 .divConsoles img{
     width: 12em;
-}
+}*/
