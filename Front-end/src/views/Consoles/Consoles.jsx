@@ -2,7 +2,8 @@ import React from 'react';
 import xbox from '../../imagens/xbox.png';
 import playstation from '../../imagens/playstation.png';
 import nintendo from '../../imagens/Nintendo.jpg';
-import pc from '../../imagens/windows.png';
+import pc from '../../imagens/computer.png';
+import mobile from '../../imagens/celular.png';
 import { Route, Link, useNavigate } from 'react-router-dom';
 import './Consoles.css';
 import { useContext } from 'react';
@@ -36,7 +37,12 @@ function Consoles() {
         {
             name: 'PC',
             image: pc,
-            consoles: ['PC'],
+            consoles: ['PC', 'macOS', 'Linux'],
+        },
+        {
+            name: 'Mobile',
+            image: mobile,
+            consoles: ['iOS', 'Android'],
         },
     ];
 

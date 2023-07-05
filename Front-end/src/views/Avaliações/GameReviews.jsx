@@ -4,6 +4,22 @@ import { getGameReviews, postGameReview, getUser } from '../../services/gameServ
 import { useAuth } from '../../contexts/useAuth'
 import { useParams } from 'react-router-dom';
 
+async function fetchUserNames(reviews, setUserNames) {
+    try {
+      const newNames = {};
+      for (const review of reviews) {
+        const userId = review.user_id;
+        if (!newNames[userId]) {
+          const user = await getUser(userId);
+          newNames[userId] = user.name;
+        }
+      }
+      setUserNames(newNames);
+    } catch (error) {
+      console.error('Erro ao obter nomes dos usuários:', error);
+    }
+  }
+
 function GameReviews() {
     const { gameId } = useParams();
     const [reviews, setReviews] = useState([]);
@@ -35,10 +51,17 @@ function GameReviews() {
 
             // Atualizar a lista de avaliações exibidas no componente
             setReviews((prevReviews) => [...prevReviews, newReview]);
+            event.target.reset();
         } catch (error) {
             console.error('Erro ao enviar a avaliação:', error);
         }
     };
+
+    const [userNames, setUserNames] = useState({});
+
+  useEffect(() => {
+    fetchUserNames(reviews, setUserNames);
+  }, [reviews]);
 
     return (
         <div>
@@ -47,6 +70,7 @@ function GameReviews() {
                 <div key={review._id}>
                     <p>Nota: {review.rate}</p>
                     <p>Comentário: {review.comment}</p>
+                    <p>Usuário: {userNames[review.user_id]}</p>
                 </div>
             ))}
 
