@@ -62,7 +62,7 @@ export async function postGameReview(gameId, rating, comment, userId) {
     // Retorna os dados da nova avaliação criada pelo backend
     return response.data;
   } catch (error) {
-    throw new Error('Erro ao enviar a avaliação:', error);
+    throw new Error('Erro ao enviar a avaliação: ${error.message}');
   }
 }
 

@@ -5,7 +5,7 @@ import './Home.css'
 const Home = () => {
     return (
         <div className="backGround">
-            <img src={bg} alt="Joystick" id="bg"/>
+            
         </div>
         
     )
