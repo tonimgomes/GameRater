@@ -26,7 +26,6 @@ export const getGamesByPlatform = async (platform: string): Promise<Game[]> => {
 
   // Filtrar os jogos com base na plataforma
   const filteredGames = games.filter((game) => game.type.includes(platform));
-  console.log(filteredGames);
   return filteredGames;
 };
 
@@ -35,4 +34,48 @@ export const createGame = (gameData: Partial<Game>): Promise<AxiosResponse<Game>
   return axios.post<Game>(`${API_URL}/games`, gameData);
 };
 
-// Adicione outras funções conforme necessário para as outras rotas (reviews, users, etc.)
+export async function getGameReviews(gameId) {
+  try {
+    const response = await fetch(`https://backend-gamerater.onrender.com/ratings?game_id=${gameId}`);
+    if (!response.ok) {
+      throw new Error('Falha ao obter as avaliações do jogo');
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+export async function postGameReview(gameId, rating, comment, userId) {
+  try {
+    // Enviar a avaliação para o backend
+    const response = await axios.post(`${API_URL}/ratings`, {
+      rate: rating,
+      comment: comment,
+      game_id: gameId,
+      user_id: userId,
+      // Você pode adicionar outros campos aqui, se necessário
+    });
+    // Retorna os dados da nova avaliação criada pelo backend
+    return response.data;
+  } catch (error) {
+    throw new Error('Erro ao enviar a avaliação:', error);
+  }
+}
+
+export async function getUser(userId) {
+  try {
+    const response = await fetch(`https://backend-gamerater.onrender.com/users/${userId}`);
+    if (!response.ok) {
+      throw new Error('Falha ao obter informações do usuário');
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
