@@ -1,4 +1,84 @@
-#bg{
-    width: 100%;
-    height: 100%;
+@font-face {
+    font-family: 'Neue Machina';
+    src: url('../../fonts/horizon-bt.ttf') format('opentype');
+}
+
+/* Resto do seu código CSS */
+
+.wrapper {
+    height: 100vh;
+    background-color: black;
+}
+
+
+.container {
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 70%;
+
+}
+
+.left-container {
+    border: 4px solid #F47617;
+    height: 62.1vh;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+    color: white;
+    font-family: 'Horizon', sans-serif;
+}
+
+.logo {
+
+    width: 200px;
+    height: 200px;
+}
+
+.title {
+    font-size: 35px;
+    margin: 10px 0;
+}
+
+.description {
+    font-size: 20px;
+}
+
+.right-container {
+    flex-direction: column;
+    display: flex;
+    align-items: flex-start;
+}
+
+.slogan-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #F47617;
+    width: 160px;
+    height: 160px;
+}
+
+.slogan-line {
+    font-size: 25px;
+    margin: 0.2px 0;
+    font-weight: 900;
+    font-family: 'Horizon', sans-serif;
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.image {
+    height: 150px;
+    width: 400px;
+    justify-content: space-evenly;
+    padding: 20px;
 }
