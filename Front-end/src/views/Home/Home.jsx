@@ -10,7 +10,7 @@ const Home = () => {
             <div className="container">
                 <div className="left-container">
                     <img src={bg} alt="Logo" className="logo" />
-                    <h2 className="title">A voz dos gamers</h2>
+                    <h2 className="title">A voz dos GAMERS</h2>
                     <h1 className="title">GAME RATER</h1>
                     <p className="description">Sua plataforma confiável para descobrir os jogos mais emocionantes.</p>
                 </div>
