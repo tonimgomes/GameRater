@@ -3,6 +3,8 @@ import { getGameReviews, postGameReview, getUser } from '../../services/gameServ
 //import { getUser } from '../../services/userService'; // Importe a função getUser
 import { useAuth } from '../../contexts/useAuth'
 import { useParams } from 'react-router-dom';
+import './GameReviews.css'
+import Modal from 'react-modal';
 
 async function fetchUserNames(reviews, setUserNames) {
     try {
@@ -24,6 +26,7 @@ function GameReviews() {
     const { gameId } = useParams();
     const [reviews, setReviews] = useState([]);
     const user = useAuth(); // Usar o hook useAuth para obter o estado de autenticação, incluindo o userId
+    const [modalIsOpen, setModalIsOpen] = useState(false);
 
     useEffect(() => {
         async function fetchData() {
@@ -63,29 +66,48 @@ function GameReviews() {
     fetchUserNames(reviews, setUserNames);
   }, [reviews]);
 
-    return (
-        <div>
-            <h2>Avaliações do Jogo</h2>
-            {reviews.map((review) => (
-                <div key={review._id}>
-                    <p>Nota: {review.rate}</p>
-                    <p>Comentário: {review.comment}</p>
-                    <p>Usuário: {userNames[review.user_id]}</p>
-                </div>
-            ))}
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
 
-            <h3>Deixe sua Avaliação</h3>
-            <form onSubmit={handleReviewSubmit}>
-                <label>
-                    Nota:
+  const closeModal = () => {;
+    setModalIsOpen(false);
+  };
+
+    return (
+        <div className='Principal'>
+            <h2>Deixe sua Opinião sobre o jogo</h2>
+            <form className='formRating' onSubmit={handleReviewSubmit}>
+                <div className='imgRating'>
+                    <img src="https://cdn.ome.lt/HNSyBx0JwUHN90bSBvTlQ5BDcxE=/770x0/smart/uploads/conteudo/fotos/Google-Play-Games-Feature-Image-Light-Green.png" alt="imagem teste" />
+                    <p>Nome do Jogo</p>
+                </div>
+                <div>
+                    <label>Nota: </label>
                     <input type="number" min="1" max="10" required name="rating" />
-                </label>
-                <label>
-                    Comentário:
+                </div>
+                <div>
+                    <label>Comentário:</label>
                     <textarea required name="comment" />
-                </label>
-                <button type="submit">Enviar Avaliação</button>
+                </div>
+                <button className='submitRating' type="submit">Enviar Avaliação</button>
             </form>
+                <button className="commentRating" onClick={() => openModal()}>
+                  Visualizar Comentários
+                </button>
+                <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                className="modal-content"
+                overlayClassName="modal-overlay"
+                >
+                    <h2>Comentários</h2>
+                {reviews.map((review) => (
+                    <div key={review._id}>
+                        <p>{userNames[review.user_id]} (Nota: {review.rate}): {review.comment} </p>
+                    </div>
+                ))}   
+                </Modal>
         </div>
     );
 }
