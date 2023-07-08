@@ -1,27 +1,47 @@
+.principal {
+    height: 100vh;
+    background-color: black;
+    padding-top: 1px;
+}
+
 .titulo-consoles {
     display: flex;
     justify-content: left;
     font-size: 3em;
-    margin-left: 1em;
+    margin-left: 0.5em;
+    color: white;
 }
 
 .divConsoles {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     justify-content: space-evenly;
-    margin-left: 7.5em;
-    margin-top: 5em;
-    gap: 2em;
+    margin-top: 4em;
 }
 
-.platform-container {
+.platform-container{
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-right: 1em;
+    margin-left: 1em;
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-radius: 12px;
+    color: #F47617;
+    font-style: bold;
+    font-weight: 500;
 }
 
+.logo-consoles {
+    width: 10em;
+    height: 10em;
+}
 
 .logo-consoles img {
+    background-color: rgb(255, 255, 255);
+    border-radius: 12px;
+    margin-top: 0.1em;
     width: 10em;
     height: 10em;
 }
@@ -29,36 +49,23 @@
 .consoles-list {
     margin-top: 1em;
 }
-
 .console-item {
     cursor: pointer;
+    color: black;
+    width: 13em;
+    text-align: center;
+    margin-bottom: 0.2em;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    
 }
 .console-item:hover {
-    color: rgb(237, 0, 0);
+    color: rgb(255, 255, 255);
+    background-color: #F47617;
     transition: 0.5s;
+    
+    text-align: center;
     font-style: bold;
+    font-weight: 500;
 }
-
-/*
-.titulo-consoles{
-    display: flex;
-    justify-content: left;
-    font-size: 3em;
-    margin-left: 1em;
-}
-
-.divConsoles{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    justify-content: space-evenly;
-    margin-left: 7.5em;
-    margin-top: 5em;
-}
-
-.logo-consoles{ 
-    cursor: pointer;
-}
-
-.divConsoles img{
-    width: 12em;
-}*/

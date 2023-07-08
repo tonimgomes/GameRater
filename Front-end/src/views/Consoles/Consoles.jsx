@@ -1,23 +1,19 @@
-import React from 'react';
+import { useContext, React } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { PlatformContext } from '../../contexts/platformContext';
+
 import xbox from '../../imagens/xbox.png';
 import playstation from '../../imagens/playstation.png';
 import nintendo from '../../imagens/Nintendo.jpg';
 import pc from '../../imagens/computer.png';
 import mobile from '../../imagens/celular.png';
-import { Route, Link, useNavigate } from 'react-router-dom';
-import './Consoles.css';
-import { useContext } from 'react';
-import { PlatformContext } from '../../contexts/platformContext';
 
-function Consoles() {
+import './Consoles.css';
+
+const Consoles = () => {
     const navigate = useNavigate();
     const { setSelectedPlatform } = useContext(PlatformContext);
-
-    function handleClick(platform) {
-        setSelectedPlatform(platform);
-        navigate('/games');
-    }
-
+    
     const platforms = [
         {
             name: 'Xbox',
@@ -46,18 +42,26 @@ function Consoles() {
         },
     ];
 
+    // Redireciona para a página de jogos filtrando pelo console selecionado
+    function handleClick(platform) {
+        setSelectedPlatform(platform);
+        navigate('/games');
+    }
+
     return (
         <div className="principal">
-            <div>
-                <h1 className="titulo-consoles">Selecione uma plataforma:</h1>
-            </div>
+            <h1 className="titulo-consoles">Selecione uma plataforma:</h1>
 
             <div className="divConsoles">
                 {platforms.map((platform) => (
                     <div className="platform-container" key={platform.name}>
                         <div className="logo-consoles">
-                            <img src={platform.image} alt={platform.name} />
+                            <img
+                                src={platform.image}
+                                alt={platform.name}
+                            /> 
                         </div>
+                        
                         <div className="consoles-list">
                             {platform.consoles.map((console) => (
                                 <div
@@ -77,52 +81,3 @@ function Consoles() {
 }
 
 export default Consoles;
-
-/*
-import React from 'react'
-import xbox from '../../imagens/xbox.png'
-import pl from '../../imagens/playstation.png'
-import nswitch from '../../imagens/switch.png'
-import pc from '../../imagens/windows.png'
-import {Route, Link, useNavigate} from "react-router-dom";
-import './Consoles.css'
-import { useContext } from 'react';
-import { PlatformContext } from '../../contexts/platformContext'
-
-function Consoles() {
-    const navigate = useNavigate();
-    const { setSelectedPlatform } = useContext(PlatformContext);
-
-    function handleClick(platform) {
-        setSelectedPlatform(platform);
-        navigate('/games');
-    }
-
-    return (
-        <div className="principal">
-            <div>
-                <h1 className="titulo-consoles">Selecione uma plataforma:</h1>
-            </div>
-
-            <div className="divConsoles">
-                <div className="logo-consoles" id='xbox' onClick={() => handleClick('Xbox One')}>
-                    <img src={xbox} alt="XBox" />
-                </div>
-
-                <div className="logo-consoles" id='play' onClick={() => handleClick('PlayStation 5')}>
-                    <img src={pl} alt="Playstation" />
-                </div>
-
-                <div className="logo-consoles" id='switch' onClick={() => handleClick('Nintendo Switch')}>
-                    <img src={nswitch} alt="Switch" />
-                </div>
-
-                <div className="logo-consoles" id='pc' onClick={() => handleClick('PC')}>
-                    <img src={pc} alt="Windows" />
-                </div>
-            </div>
-        </div>
-    )
-}
-
-export default Consoles*/
