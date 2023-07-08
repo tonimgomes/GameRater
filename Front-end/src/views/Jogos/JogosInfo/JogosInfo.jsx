@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getGameById } from '../../../services/gameService';
+import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from 'react-icons/md';
 import './JogosInfo.css';
 
 const JogosInfo = () => {
@@ -52,38 +53,47 @@ const JogosInfo = () => {
           </div>
         ))}
         <button className="prev-slide-button" onClick={handlePrevSlide}>
-          Anterior
+          <MdKeyboardArrowLeft></MdKeyboardArrowLeft>
         </button>
         <button className="next-slide-button" onClick={handleNextSlide}>
-          Próximo
+        <MdKeyboardArrowRight></MdKeyboardArrowRight>
         </button>
       </div>
       <div className="about">
-        <h2>About</h2>
+        <h2>Sumário</h2>
         <p>{game.summary}</p>
       </div>
       <div className="game-details">
         <h2>Detalhes do Jogo</h2>
-        <p>
-          <span>Consoles:</span> {game.type.join(', ')}
-        </p>
-        <p>
-          <span>Gêneros:</span> {game.genre.join(', ')}
-        </p>
-        <p>
-          <span>Data de Lançamento:</span> {game.released}
-        </p>
-        <p>
-          <span>Tempo de Jogo:</span> {game.playtime}
-        </p>
-        <p>
-          <span>Desenvolvedor:</span> {game.developer}
-        </p>
-        <p>
-          <span>Número de Avaliações:</span> {game.numReviews}
-        </p>
+        <div className="details-grid">
+          <div>
+            <span>Plataformas</span>
+            <p>{game.type.join(', ')}</p>
+          </div>
+          <div>
+            <span>Gêneros</span>
+            <p>{game.genre.join(', ')}</p>
+          </div>
+          <div>
+            <span>Data de Lançamento</span>
+            <p>{game.released}</p>
+          </div>
+          <div>
+            <span>Tempo de Jogo</span>
+            <p>{game.playtime}h</p>
+          </div>
+          <div>
+            <span>Desenvolvedor</span>
+            <p>{game.developer}</p>
+          </div>
+          <div>
+            <span>Número de Avaliações</span>
+            <p>{game.numReviews}</p>
+          </div>
+        </div>
       </div>
     </div>
+        
   );
 };
 
