@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 import './Jogos.css';
 import React, { useEffect, useState, useContext } from 'react';
 import { getGames, getGamesByPlatform } from '../../services/gameService'; // Importe a função getGames do arquivo api.js
@@ -22,7 +22,8 @@ const GameList = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const { selectedPlatform } = useContext(PlatformContext);
   const [searchType, setSearchType] = useState('title'); // Inicia a pesquisa por título
-  const [searchTerm, setSearchTerm] = useState(''); // Inicia o termo de pesquisa vazio
+  const [searchTerm, setSearchTerm] = useState('');
+  const [hoveredCard, setHoveredCard] = useState(null); 
 
   useEffect(() => {
     if (selectedPlatform != 'all' && selectedPlatform != '') {
@@ -73,6 +74,14 @@ const GameList = () => {
     setModalIsOpen(false);
   };
 
+  const handleCardMouseEnter = (gameId) => {
+    setHoveredCard(gameId);
+  };
+
+  const handleCardMouseLeave = () => {
+    setHoveredCard(null);
+  };
+
   return (
     <div>
       <h1>Lista de Jogos</h1>
@@ -95,51 +104,57 @@ const GameList = () => {
       </div>
       <div className="game-cards">
         {games.map(game => (
-          <div key={game._id} className="game-card">
+          <div 
+            key={game._id} 
+            className={`game-card ${hoveredCard === game._id ? 'hovered' : ''}`} 
+            onMouseEnter={() => handleCardMouseEnter(game._id)}
+            onMouseLeave={handleCardMouseLeave}>
             <img src={game.imgPath} alt={game.title} />
-            <h3><Link to={`/games/${game._id}/reviews`}>{game.title}</Link></h3>
-            <button className="summary-button" onClick={() => openModal(game)}>
-              Ver Resumo
-            </button>
-            <div className="game-info">
-            <p>
-              <span>Desenvolvedores:</span>
-              <span>{game.developer.join(', ')}</span>
-            </p>
+            <h3><Link to={`/games/${game._id}`}>{game.title}</Link></h3>
             
-                <p>
-                  <span>Gêneros:</span>
-                  <span>{game.genre.join(', ')}</span>
-                </p>
-                </div>
-            <p>
-              <span>Consoles:</span>
-              <div className="platform-container">
-                {game.type.includes('PlayStation 5') || game.type.includes('PlayStation 4') || game.type.includes('PlayStation 3') || game.type.includes('PlayStation 2') ? (
-                  <img src={playstationLogo} alt="PlayStation" className="platform-logo" />
-                  ) : null}
-                {game.type.includes('Xbox One') || game.type.includes('Xbox Series S/X') || game.type.includes('Xbox 360') || game.type.includes('Xbox') ? (
-                  <img src={xboxLogo} alt="Xbox" className="platform-logo" />
-                  ) : null}
-                {game.type.includes('PC') ? (
-                  <img src={windowsLogo} alt="PC" className="platform-logo" />
-                ) : null}
-                {game.type.includes('Android') ? (
-                  <img src={androidLogo} alt="Android" className="platform-logo" />
-                  ) : null}
-                {game.type.includes('macOS') || game.type.includes('iOS') ? (
-                  <img src={macLogo} alt="macOS" className="platform-logo" />
-                  ) : null}
-                {game.type.includes('Linux') ? (
-                  <img src={linux} alt="linux" className="platform-logo" />
-                  ) : null}
-                {game.type.includes('Nintendo Switch') || game.type.includes('Nintendo 3DS') || game.type.includes('Wii U')? (
-                  <img src={nintendo} alt="nitnedoLogo" className="platform-logo-nintendo" />
-                  ) : null}
+            <div className= {`game-info-hidden ${hoveredCard === game._id ? 'hovered' : ''}`}>
+              <div className= {`game-info`}>
+              <p>
+                <span>Desenvolvedores:</span>
+                <span>{game.developer.join(', ')}</span>
+              </p>
+              
+                  <p>
+                    <span>Gêneros:</span>
+                    <span>{game.genre.join(', ')}</span>
+                  </p>
               </div>
-            </p>
+              <p>
+                <span className={`j-platform-container-consoles`}>Consoles:</span>
+                <div className={`j-platform-container`}>
+                  {game.type.includes('PlayStation 5') || game.type.includes('PlayStation 4') || game.type.includes('PlayStation 3') || game.type.includes('PlayStation 2') ? (
+                    <img src={playstationLogo} alt="PlayStation" className="platform-logo" />
+                    ) : null}
+                  {game.type.includes('Xbox One') || game.type.includes('Xbox Series S/X') || game.type.includes('Xbox 360') || game.type.includes('Xbox') ? (
+                    <img src={xboxLogo} alt="Xbox" className="platform-logo" />
+                    ) : null}
+                  {game.type.includes('PC') ? (
+                    <img src={windowsLogo} alt="PC" className="platform-logo" />
+                  ) : null}
+                  {game.type.includes('Android') ? (
+                    <img src={androidLogo} alt="Android" className="platform-logo" />
+                    ) : null}
+                  {game.type.includes('macOS') || game.type.includes('iOS') ? (
+                    <img src={macLogo} alt="macOS" className="platform-logo" />
+                    ) : null}
+                  {game.type.includes('Linux') ? (
+                    <img src={linux} alt="linux" className="platform-logo" />
+                    ) : null}
+                  {game.type.includes('Nintendo Switch') || game.type.includes('Nintendo 3DS') || game.type.includes('Wii U')? (
+                    <img src={nintendo} alt="nitnedoLogo" className="platform-logo-nintendo" />
+                    ) : null}
+                </div>
+              </p>
+              <Link to={`/games/${game._id}/reviews`} className="summary-button">
+                Reviews <BsFillArrowRightCircleFill />
+              </Link>
+            </div>
             <p className="rating">Rating: {game.rating}</p>
-            
           </div>
         ))}
       </div>

@@ -12,12 +12,32 @@ interface Game {
   imgPath: string;
   summary: string;
   developer: string[];
+  playtime: number;
+  released: Date;
+  numReviews: number;
   rating: number;
+  screenshots: string[]
 }
 
 // Função para obter os jogos
 export const getGames = (): Promise<AxiosResponse<Game[]>> => {
   return axios.get<Game[]>(`${API_URL}/games`);
+};
+
+export const getGameById = async (gameId: string): Promise<Game> => {
+  try {
+    const response = await getGames();
+    const games = response.data;
+    const game = games.find((game) => game._id === gameId);
+    console.log(game)
+    if (game) {
+      return game;
+    } else {
+      throw new Error(`Jogo com o ID ${gameId} não encontrado.`);
+    }
+  } catch (error) {
+    throw new Error(`Erro ao obter o jogo com o ID ${gameId}: ${error.message}`);
+  }
 };
 
 export const getGamesByPlatform = async (platform: string): Promise<Game[]> => {
