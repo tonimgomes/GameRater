@@ -91,6 +91,7 @@ const GameReviews = () => {
 
   return (
     <div className="Principal">
+      <div className='TelaComentario'>
       <h2>Deixe sua Opinião sobre o jogo</h2>
       <form className="formRating" onSubmit={handleReviewSubmit}>
         <div className="imgRating">
@@ -119,9 +120,12 @@ const GameReviews = () => {
         </div>
         <button className="submitRating" type="submit">Enviar Avaliação</button>
       </form>
-      <button className="commentRating" onClick={() => openModal()}>
+      <div className="commentRating">
+        <button  onClick={() => openModal()}>
         Visualizar Comentários
-      </button>
+        </button>
+      </div>
+      </div>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
