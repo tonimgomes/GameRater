@@ -135,7 +135,6 @@
     padding: 16px;
     max-width: 600px;
     width: 90%;
-    text-align: center;
     border-radius: 4px;
     color: #000000;
   }
@@ -145,5 +144,17 @@
   }
   
   .modal-content p {
+    text-align: left;
     margin-bottom: 0;
   }
+
+.tituloComentarios{
+  color: white;
+  background-color: #F47617;
+}
+
+hr{
+  height: 1px;
+  background-color: #F47617;
+  border-color: #F47617;
+}

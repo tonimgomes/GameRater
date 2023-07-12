@@ -132,9 +132,11 @@ const GameReviews = () => {
         className="modal-content"
         overlayClassName="modal-overlay"
       >
-        <h2>Comentários</h2>
+        <h2 className="tituloComentarios">Comentários</h2>
+
         {reviews.map((review) => (
           <div key={review._id}>
+            <hr className="barra"></hr>
             <p>{userNames[review.user_id]} (Nota: {review.rate}): {review.comment} </p>
           </div>
         ))}
