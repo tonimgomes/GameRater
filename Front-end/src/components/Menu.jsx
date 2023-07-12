@@ -27,26 +27,27 @@ const Menu = () => {
     }
     
     return(
-        <div>
+        <>
             <nav className="menu">
-                <h2 className="btnPrincipal">
+                <div className="btnPrincipal">
                     <Link to='/' >
                         <BiJoystick/> GameRater
                     </Link>
-                </h2>
+                </div>
 
-                <button onClick={handleClick}>Consoles</button>
-                <button onClick={gamesClick}>Jogos</button>
+                <button className="btnConsoles" onClick={handleClick}>Consoles</button>
+                <button className="btnJogos" onClick={gamesClick}>Jogos</button>
+
                 {auth.username ? 
                 (<>
                 <span className="loggedInUser">Bem-vindo, {auth.username}!</span>
-                <button onClick={logoutClick}>Logout</button>
+                <button className="btnLogout" onClick={logoutClick}>Logout</button>
                 </>) :
-                (<button onClick={loginClick}>Login</button>) 
+                (<button className="btnLogin" onClick={loginClick}>Login</button>) 
                 }
                 
             </nav>
-        </div>
+        </>
     )
 }
 

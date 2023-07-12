@@ -227,8 +227,8 @@
 
 .search-container button {
   padding: 8px 16px;
-  color: black;
-  background-color: orange;
+  color: white;
+  background-color: #F47617;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -237,6 +237,10 @@
 
 .search-container button:hover {
   color: #ffffff;
+}
+
+h1 {
+  text-align: center;
 }
 
 /*.game-table {

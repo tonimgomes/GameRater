@@ -38,7 +38,7 @@ function Cadastro(){
             <form className='cadastroTela' onSubmit={handleSubmit(submit)} noValidate>
                 <h1>Cadastrar</h1>   
 
-                <label htmlFor="username">Usuário</label>
+                <label htmlFor="username">Usuário:</label>
                 <input
                     type='text'
                     id='username'
@@ -47,7 +47,7 @@ function Cadastro(){
                 />
                 {errors.username?.message}
 
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">Email:</label>
                 <input
                     type='text'
                     id='email'
@@ -56,7 +56,7 @@ function Cadastro(){
                 />
                 {errors.email?.message}
 
-                <label htmlFor='password'>Senha</label>
+                <label htmlFor='password'>Senha:</label>
                 <input
                     type='password'
                     id="password" 
@@ -64,7 +64,7 @@ function Cadastro(){
                 />
                 {errors.password?.message}
 
-                <label htmlFor='passwordConf'>Confirmar Senha</label>
+                <label htmlFor='passwordConf'>Confirmar Senha:</label>
                 <input
                     type='password'
                     id="passwordConf" 

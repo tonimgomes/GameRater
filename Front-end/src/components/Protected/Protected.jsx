@@ -5,7 +5,7 @@ export const Protected = ({ children }) => {
 
    if(!auth.username) {
       return(
-         <h1>You don't have access</h1>
+         <h1>Faça login ou cadastre-se para acessar a página.</h1>
       )
    }
 

@@ -43,7 +43,7 @@ export const Login = () => {
       <form className='loginTela' onSubmit={handleSubmit(onSubmit)}>
         <h1>Login</h1>
 
-        <label htmlFor="username">Usuário</label>
+        <label htmlFor="username">Usuário:</label>
         <input
           type='text'
           id='username'
@@ -52,7 +52,7 @@ export const Login = () => {
         />
         {errors.username?.message}
 
-        <label htmlFor='password'>Senha</label>
+        <label htmlFor='password'>Senha:</label>
         <input
           type='password'
           id='password'
