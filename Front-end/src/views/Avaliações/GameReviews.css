@@ -1,159 +1,163 @@
 .Principal {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    color: #000000;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  color: #000000;
+}
 
-  .TelaComentario{
-    background-color: #fff;
-    margin-top: 20px;
-    border-radius: 10px;
-  }
-  
-  .Principal h2 {
-    padding: 0;
-    text-align: center;
-    border-bottom: 2px solid black;
-    margin-top: 5px;
-  }
-  .Principal p{
-    font-size: 20px;
-    font-weight: bold
-  }
-  
-  .rating-container {
-    display: flex;
-    align-items: center;
-  }
-  
-  .rating-container label {
-    margin-right: 10px;
-  }
+.TelaComentario {
+  background-color: #fff;
+  margin-top: 20px;
+  border-radius: 10px;
+}
 
-  .formRating {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    width: 600px;
-    height: auto;
-    padding: 15px;
-    margin: 0;
-  }
-  
-  .submitRating {
-    background-color: #253af7cb;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 600;
-    width: 200px;
-    height: 40px;
-    text-align: center;
-    margin: auto;
-    border: none;
-    border-radius: 6px;
-    transition: all linear 160ms;
-    cursor: pointer;
-  }
-  
-  .formRating label {
-    font-size: 20px;
-  }
-  
-  .formRating textarea {
-    height: 90px;
-    width: 590px;
-    font-size: 20px;
-  }
-  
-  .formRating input {
-    display: none; /* Ocultar o input */
-  }
-  
-  .star-rating {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    font-size: 24px;
-  }
-  
-  .star-icon {
-    color: #ccc;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  
-  .star-icon.filled {
-    color: #ffce00;
-  }
-  
-  .imgRating img {
-    max-width: 100%;
-    max-height: 100%;
-    margin:0;
-    padding:0;
-    border:0;
-  }
-  
-  .imgRating p {
-    text-align: center;
-  }
-  .commentRating{
-    text-align: center;
-  }
-  .commentRating button{
-    background-color: #858585cb;
-    color: #000000;
-    font-size: 14px;
-    font-weight: 600;
-    width: 200px;
-    height: 40px;
-    text-align: center;
-    margin: auto;
-    border: none;
-    border-radius: 6px;
-    transition: all linear 160ms;
-    cursor: pointer;
-  }
-  
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .modal-content {
-    background-color: #fff;
-    padding: 16px;
-    max-width: 600px;
-    width: 90%;
-    border-radius: 4px;
-    color: #000000;
-  }
-  
-  .modal-content h2 {
-    margin-top: 0;
-  }
-  
-  .modal-content p {
-    text-align: left;
-    margin-bottom: 0;
-  }
+.Principal h2 {
+  padding: 0;
+  text-align: center;
+  border-bottom: 2px solid black;
+  margin-top: 5px;
+}
 
-.tituloComentarios{
+.Principal p {
+  font-size: 20px;
+  font-weight: bold
+}
+
+.rating-container {
+  display: flex;
+  align-items: center;
+}
+
+.rating-container label {
+  margin-right: 10px;
+}
+
+.formRating {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 600px;
+  height: auto;
+  padding: 15px;
+  margin: 0;
+}
+
+.submitRating {
+  background-color: #253af7cb;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  width: 200px;
+  height: 40px;
+  text-align: center;
+  margin: auto;
+  border: none;
+  border-radius: 6px;
+  transition: all linear 160ms;
+  cursor: pointer;
+}
+
+.formRating label {
+  font-size: 20px;
+}
+
+.formRating textarea {
+  height: 90px;
+  width: 590px;
+  font-size: 20px;
+}
+
+.formRating input {
+  display: none;
+  /* Ocultar o input */
+}
+
+.star-rating {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  font-size: 24px;
+}
+
+.star-icon {
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.star-icon.filled {
+  color: #ffce00;
+}
+
+.imgRating img {
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.imgRating p {
+  text-align: center;
+}
+
+.commentRating {
+  text-align: center;
+}
+
+.commentRating button {
+  background-color: #bababacb;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 600;
+  width: 200px;
+  height: 40px;
+  text-align: center;
+  margin: auto;
+  border: none;
+  border-radius: 6px;
+  transition: all linear 160ms;
+  cursor: pointer;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 16px;
+  max-width: 600px;
+  width: 90%;
+  border-radius: 4px;
+  color: #000000;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content p {
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.tituloComentarios {
   color: white;
   background-color: #F47617;
 }
 
-hr{
+hr {
   height: 1px;
   background-color: #F47617;
   border-color: #F47617;
