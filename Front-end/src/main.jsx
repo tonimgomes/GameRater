@@ -13,7 +13,6 @@ import { AuthProvider } from './contexts/Auth';
 import { Protected } from './components/Protected/Protected.jsx';
 import { PlatformProvider } from './contexts/platformContext.jsx';
 
-
 import App from './App.jsx'
 import './index.css'
 

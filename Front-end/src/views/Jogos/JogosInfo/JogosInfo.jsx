@@ -179,7 +179,7 @@ const JogosInfo = () => {
           </div>
           <div>
             <span>Desenvolvedor</span>
-            <p>{game.developer}</p>
+            <p>{game.developer.join(', ')}</p>
           </div>
           <div>
             <span>Número de Avaliações</span>

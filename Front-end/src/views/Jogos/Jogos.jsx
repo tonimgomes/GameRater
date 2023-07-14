@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
-import './Jogos.css';
 import React, { useEffect, useState, useContext } from 'react';
-import { getGames, getGamesByPlatform } from '../../services/gameService'; // Importe a função getGames do arquivo api.js
 import Modal from 'react-modal';
-import { PlatformContext } from '../../contexts/platformContext';
+
 import xboxLogo from '../../imagens/xboxbranco.png';
 import playstationLogo from '../../imagens/playbranco.png';
 import windowsLogo from '../../imagens/windowsbranco.png';
@@ -13,13 +11,16 @@ import macLogo from '../../imagens/macOsbranco.png';
 import linux from '../../imagens/linuxBranco.png';
 import nintendo from '../../imagens/nintendoBranco.png';
 
+import { PlatformContext } from '../../contexts/platformContext';
+import { getGames, getGamesByPlatform } from '../../services/gameService'; // Importa jogos api.js
+
+import './Jogos.css';
+
 
 Modal.setAppElement('#root');
 
 const GameList = () => {
   const [games, setGames] = useState([]);
-  const [selectedGame, setSelectedGame] = useState(null);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
   const { selectedPlatform } = useContext(PlatformContext);
   const [searchType, setSearchType] = useState('title');
   const [searchTerm, setSearchTerm] = useState('');
@@ -63,16 +64,6 @@ const GameList = () => {
         });
     }
   }, [selectedPlatform, searchType, searchTerm]);
-
-  const openModal = (game) => {
-    setSelectedGame(game);
-    setModalIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setSelectedGame(null);
-    setModalIsOpen(false);
-  };
 
   const handleCardMouseEnter = (gameId) => {
     setHoveredCard(gameId);
@@ -158,20 +149,6 @@ const GameList = () => {
           </div>
         ))}
       </div>
-
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        className="modal-content"
-        overlayClassName="modal-overlay"
-      >
-        {selectedGame && (
-          <>
-            <h2>{selectedGame.title}</h2>
-            <p>{selectedGame.summary}</p>
-          </>
-        )}
-      </Modal>
     </div>
   );
 };

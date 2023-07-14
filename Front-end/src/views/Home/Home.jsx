@@ -1,8 +1,8 @@
 import React from 'react';
 import bg from '../../imagens/logo.webp';
-import './Home.css';
 import img1 from '../../imagens/img1.jpg';
 import img2 from '../../imagens/img2.jpg';
+import './Home.css';
 
 const Home = () => {
     return (
