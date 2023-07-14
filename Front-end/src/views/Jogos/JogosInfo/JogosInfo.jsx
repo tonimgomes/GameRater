@@ -71,16 +71,16 @@ const JogosInfo = () => {
     
     const stars = [];
 
-    // Renderizar estrelas inteiras
+    
     for (let i = 0; i < fullStars; i++) {
       stars.push(<ImStarFull key={`full-star-${i}`} />);
     }
 
-    // Renderizar meia estrela, se necessário
+    
     if (hasHalfStar) {
       stars.push(<ImStarHalf key="half-star" />);
     }
-     // Renderizar estrelas vazias
+    
     for (let i = 0; i < emptyStars; i++) {
     stars.push(<ImStarEmpty key={`empty-star-${i}`} className="empty-star" />);
   }

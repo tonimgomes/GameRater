@@ -13,7 +13,7 @@ import './Consoles.css';
 const Consoles = () => {
     const navigate = useNavigate();
     const { setSelectedPlatform } = useContext(PlatformContext);
-    
+
     const platforms = [
         {
             name: 'Xbox',
@@ -42,7 +42,6 @@ const Consoles = () => {
         },
     ];
 
-    // Redireciona para a página de jogos filtrando pelo console selecionado
     function handleClick(platform) {
         setSelectedPlatform(platform);
         navigate('/games');
@@ -59,9 +58,9 @@ const Consoles = () => {
                             <img
                                 src={platform.image}
                                 alt={platform.name}
-                            /> 
+                            />
                         </div>
-                        
+
                         <div className="consoles-list">
                             {platform.consoles.map((console) => (
                                 <div

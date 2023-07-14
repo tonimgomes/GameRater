@@ -21,19 +21,19 @@ export const Login = () => {
   const auth = useAuth();
   const navigate = useNavigate();
 
-  async function onSubmit(data){
+  async function onSubmit(data) {
     try {
       const { username, password } = data;
       const success = await auth.login(username, password);
       if (success) {
-        // Lógica de tratamento de login bem-sucedido (ex: redirecionamento para outra página)
+
         navigate('/games');
       } else {
-        // Lógica de tratamento de login inválido (ex: exibição de mensagem de erro)
+
         alert('Email ou senha incorretos');
       }
     } catch (error) {
-      // Lógica de tratamento de erro de login (ex: exibição de mensagem de erro)
+
       console.error('Erro ao fazer login:', error);
     }
   };

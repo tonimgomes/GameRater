@@ -28,7 +28,7 @@ export async function cadastro(username: string, email: string, password: string
       password: password,
     };
 
-    // Fazer a requisição POST para cadastrar o novo usuário
+
     await axios.post(`${API_URL}/users`, newUser);
   } catch (error) {
     console.error('Erro ao cadastrar usuário:', error);

@@ -21,9 +21,9 @@ const GameList = () => {
   const [selectedGame, setSelectedGame] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const { selectedPlatform } = useContext(PlatformContext);
-  const [searchType, setSearchType] = useState('title'); // Inicia a pesquisa por título
+  const [searchType, setSearchType] = useState('title');
   const [searchTerm, setSearchTerm] = useState('');
-  const [hoveredCard, setHoveredCard] = useState(null); 
+  const [hoveredCard, setHoveredCard] = useState(null);
 
   useEffect(() => {
     if (selectedPlatform != 'all' && selectedPlatform != '') {
@@ -35,7 +35,7 @@ const GameList = () => {
           console.error('Erro ao obter os jogos:', error);
         });
     } else if (searchTerm) {
-      // Se o termo de pesquisa estiver preenchido, faz a pesquisa pelo tipo selecionado
+
       getGames()
         .then(response => {
           const filteredGames = response.data.filter(game => {
@@ -104,50 +104,50 @@ const GameList = () => {
       </div>
       <div className="game-cards">
         {games.map(game => (
-          <div 
-            key={game._id} 
-            className={`game-card ${hoveredCard === game._id ? 'hovered' : ''}`} 
+          <div
+            key={game._id}
+            className={`game-card ${hoveredCard === game._id ? 'hovered' : ''}`}
             onMouseEnter={() => handleCardMouseEnter(game._id)}
             onMouseLeave={handleCardMouseLeave}>
             <img src={game.imgPath} alt={game.title} />
             <h3><Link to={`/games/${game._id}`}>{game.title}</Link></h3>
-            
-            <div className= {`game-info-hidden ${hoveredCard === game._id ? 'hovered' : ''}`}>
-              <div className= {`game-info`}>
-              <p>
-                <span>Desenvolvedores:</span>
-                <span>{game.developer.join(', ')}</span>
-              </p>
-              
-                  <p>
-                    <span>Gêneros:</span>
-                    <span>{game.genre.join(', ')}</span>
-                  </p>
+
+            <div className={`game-info-hidden ${hoveredCard === game._id ? 'hovered' : ''}`}>
+              <div className={`game-info`}>
+                <p>
+                  <span>Desenvolvedores:</span>
+                  <span>{game.developer.join(', ')}</span>
+                </p>
+
+                <p>
+                  <span>Gêneros:</span>
+                  <span>{game.genre.join(', ')}</span>
+                </p>
               </div>
               <p>
                 <span className={`j-platform-container-consoles`}>Consoles:</span>
                 <div className={`j-platform-container`}>
                   {game.type.includes('PlayStation 5') || game.type.includes('PlayStation 4') || game.type.includes('PlayStation 3') || game.type.includes('PlayStation 2') ? (
                     <img src={playstationLogo} alt="PlayStation" className="platform-logo" />
-                    ) : null}
+                  ) : null}
                   {game.type.includes('Xbox One') || game.type.includes('Xbox Series S/X') || game.type.includes('Xbox 360') || game.type.includes('Xbox') ? (
                     <img src={xboxLogo} alt="Xbox" className="platform-logo" />
-                    ) : null}
+                  ) : null}
                   {game.type.includes('PC') ? (
                     <img src={windowsLogo} alt="PC" className="platform-logo" />
                   ) : null}
                   {game.type.includes('Android') ? (
                     <img src={androidLogo} alt="Android" className="platform-logo" />
-                    ) : null}
+                  ) : null}
                   {game.type.includes('macOS') || game.type.includes('iOS') ? (
                     <img src={macLogo} alt="macOS" className="platform-logo" />
-                    ) : null}
+                  ) : null}
                   {game.type.includes('Linux') ? (
                     <img src={linux} alt="linux" className="platform-logo" />
-                    ) : null}
-                  {game.type.includes('Nintendo Switch') || game.type.includes('Nintendo 3DS') || game.type.includes('Wii U')? (
+                  ) : null}
+                  {game.type.includes('Nintendo Switch') || game.type.includes('Nintendo 3DS') || game.type.includes('Wii U') ? (
                     <img src={nintendo} alt="nitnedoLogo" className="platform-logo-nintendo" />
-                    ) : null}
+                  ) : null}
                 </div>
               </p>
               <Link to={`/games/${game._id}/reviews`} className="summary-button">

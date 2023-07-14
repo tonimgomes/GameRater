@@ -1,8 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 
-const API_URL = 'https://backend-gamerater.onrender.com'; // Substitua pelo seu link do render.com
+const API_URL = 'https://backend-gamerater.onrender.com';
 
-// Interface para o objeto de jogo
 interface Game {
   _id: string;
   id_rawg: number;
@@ -19,7 +18,6 @@ interface Game {
   screenshots: string[]
 }
 
-// Função para obter os jogos
 export const getGames = (): Promise<AxiosResponse<Game[]>> => {
   return axios.get<Game[]>(`${API_URL}/games`);
 };
@@ -29,7 +27,6 @@ export const getGameById = async (gameId: string): Promise<Game> => {
     const response = await getGames();
     const games = response.data;
     const game = games.find((game) => game._id === gameId);
-    console.log(game)
     if (game) {
       return game;
     } else {
@@ -44,12 +41,12 @@ export const getGamesByPlatform = async (platform: string): Promise<Game[]> => {
   const response = await getGames();
   const games = response.data;
 
-  // Filtrar os jogos com base na plataforma
+
   const filteredGames = games.filter((game) => game.type.includes(platform));
   return filteredGames;
 };
 
-// Função para criar um novo jogo
+
 export const createGame = (gameData: Partial<Game>): Promise<AxiosResponse<Game>> => {
   return axios.post<Game>(`${API_URL}/games`, gameData);
 };
@@ -71,15 +68,15 @@ export async function getGameReviews(gameId) {
 
 export async function postGameReview(gameId, rating, comment, userId) {
   try {
-    // Enviar a avaliação para o backend
+
     const response = await axios.post(`${API_URL}/ratings`, {
       rate: rating,
       comment: comment,
       game_id: gameId,
       user_id: userId,
-      // Você pode adicionar outros campos aqui, se necessário
+
     });
-    // Retorna os dados da nova avaliação criada pelo backend
+
     return response.data;
   } catch (error) {
     throw new Error('Erro ao enviar a avaliação: ${error.message}');
